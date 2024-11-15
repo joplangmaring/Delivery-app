@@ -115,7 +115,7 @@ const Page = () => {
             >
               Submit
             </button>
-            <Link className="text-sm mt-3 text-right" href={"/"}>
+            <Link className="text-sm mt-3 text-right" href={"/auth/login"}>
             Already have an account? <span className="underline">Login</span>
           </Link>
           </div>
