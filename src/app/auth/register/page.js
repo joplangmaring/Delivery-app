@@ -1,7 +1,5 @@
-
 "use client"
 import React, { useState } from 'react';
-// import { getServerSession } from "next-auth";
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
 
@@ -64,9 +62,9 @@ const Page = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-sm p-8 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Register</h2>
+        <h2 className="text-2xl font-bold text-center mb-6 text-orange-600">Register</h2>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="flex flex-col">
@@ -78,7 +76,7 @@ const Page = () => {
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
               placeholder="Enter your name"
             />
           </div>
@@ -91,7 +89,7 @@ const Page = () => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
               placeholder="Enter your email"
             />
           </div>
@@ -104,20 +102,20 @@ const Page = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
               placeholder="Enter your password"
             />
           </div>
           <div className="text-center">
             <button
               type="submit"
-              className="w-full px-4 py-2 mt-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="w-full px-4 py-2 mt-4 bg-orange-600 text-white font-semibold rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
             >
               Submit
             </button>
-            <Link className="text-sm mt-3 text-right" href={"/auth/login"}>
-            Already have an account? <span className="underline">Login</span>
-          </Link>
+            <Link className="text-sm mt-3 text-right text-gray-600 hover:text-orange-600" href={"/auth/login"}>
+              Already have an account? <span className="underline">Login</span>
+            </Link>
           </div>
         </form>
       </div>

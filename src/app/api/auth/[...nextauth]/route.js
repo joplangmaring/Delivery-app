@@ -1,4 +1,3 @@
-// pages/api/auth/[...nextauth].js
 import { connectMongoDB } from "@/lib/mongodb";
 import User from "@/models/user";
 import NextAuth from "next-auth/next";
@@ -19,17 +18,22 @@ export const authOptions = {
           await connectMongoDB();
           const user = await User.findOne({ email });
 
-          if (!user || !user.isVerified) { // Check if user exists and is verified
-            return null;
+          if (!user || !user.isVerified) {
+            return null; // User does not exist or is not verified
           }
 
           const passwordsMatch = await bcrypt.compare(password, user.password);
 
           if (!passwordsMatch) {
-            return null;
+            return null; // Incorrect password
           }
 
-          return user;
+          return {
+            id: user._id.toString(),
+            name: user.name,
+            email: user.email,
+            image: user.image, // Include user image
+          };
         } catch (error) {
           console.log("Error: ", error);
           return null;
@@ -59,26 +63,33 @@ export const authOptions = {
       let existingUser = await User.findOne({ email: user.email });
 
       if (!existingUser) {
-        // If user signs in with Google or GitHub, store them in the database
+        // Save new user for social logins
         existingUser = new User({
           name: user.name,
           email: user.email,
-          image: user.image,
+          image: user.image, // Save the image
           provider: account.provider,
-          isVerified: true, // Mark as verified for social accounts, if needed
+          isVerified: true, // Assume social accounts are verified
         });
         await existingUser.save();
       }
 
-      // Prevent login if user is not verified
       if (!existingUser.isVerified) {
         throw new Error("Email is not verified.");
       }
 
       return true;
     },
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.image = user.image; // Add image to the token
+      }
+      return token;
+    },
     async session({ session, token }) {
-      session.user.id = token.sub;
+      session.user.id = token.id;
+      session.user.image = token.image; // Include image in the session
       return session;
     },
   },
