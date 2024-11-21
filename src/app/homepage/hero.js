@@ -4,11 +4,12 @@ import deliver from "../../../public/deli.png";
 
 const Hero = () => {
   return (
+    <section>
     <div className="flex flex-col lg:flex-row items-center justify-between px-6 py-12 lg:py-20 bg-gradient-to-r from-orange-100 via-white to-orange-50 shadow-md rounded-lg">
       {/* Text Section */}
       <div className="lg:w-1/2 text-center lg:text-left space-y-6">
         <h1 className="text-4xl lg:text-5xl font-bold text-orange-600">
-          We Are Ready to Deliver Your Goods
+          Roi Ryngkat Are Ready to Deliver Your Goods
         </h1>
         <p className="text-gray-600 text-lg leading-relaxed">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
@@ -31,6 +32,8 @@ const Hero = () => {
         />
       </div>
     </div>
+    </section>
+
   );
 };
 

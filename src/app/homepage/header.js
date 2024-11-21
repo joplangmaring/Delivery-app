@@ -13,8 +13,8 @@ const Header = () => {
         <header className="bg-white shadow-md p-4  top-0 left-0 w-full z-50">
             <div className="container mx-auto flex justify-between items-center">
                 {/* Logo */}
-                <div className="text-2xl font-bold text-orange-600">
-                    <h1>Food Delivery</h1>
+                <div className="text-2xl font-bold text-orange-500">
+                    <h1>ROI RYNGKAT</h1>
                 </div>
 
                 {/* Search Bar */}
@@ -27,7 +27,7 @@ const Header = () => {
           <CiSearch className="text-gray-600 text-xl" />
         </div> */}
 
-                <div className="flex gap-2 text-orange-500 text-1xl font-bold">
+                <div className="flex gap-2 text-orange-500 text-2xl font-bold">
                     <Link href="/menu">
                         <h1>Menu</h1>
                     </Link>
